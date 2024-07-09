@@ -165,7 +165,6 @@ void priority()
         {
                 printf("\n Enter the pid,arrival time  burst time and priority in order");
                 scanf("%d %d %d %d",&p[i].pid,&p[i].at,&p[i].bt,&p[i].prio);
-                p[i].rt=p[i].bt;
                 p[i].completed=0;
 
         }
@@ -186,6 +185,18 @@ void priority()
                 for(j=0;j<n-i-1;j++)
                 {
                         if(p[j].at==p[j+1].at && p[j].bt>p[j+1].bt)
+                        {
+                                temp=p[j];
+                                p[j]=p[j+1];
+                                p[j+1]=temp;
+                        }
+                }
+        }
+        for(0;i<n-1;i++)
+        {
+                for(j=0;j<n-i-1;j++)
+                {
+                        if(p[j].prio>p[j+1].prio)
                         {
                                 temp=p[j];
                                 p[j]=p[j+1];
